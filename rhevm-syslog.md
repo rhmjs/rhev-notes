@@ -16,7 +16,7 @@
 
 * Create and edit /etc/rsyslog.d/remote.conf to include the following:
 
-*Replace "syslog.example.test" in the example snippet below with the information for your syslog server. Please note that this configuration may need to be modified to accomodate the requirements of your remote syslog server, such as choice of UDP or TCP, encryption, authentication, etc.*
+*Note: Replace "syslog.example.test" in the example snippet below with the information for your syslog server. Please note that this configuration may need to be modified to accomodate the requirements of your remote syslog server, such as choice of UDP or TCP, encryption, authentication, etc.*
 
 ```
 $WorkDirectory /var/lib/rsyslog # where to place spool files
