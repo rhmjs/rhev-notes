@@ -1,18 +1,18 @@
-**How do I send RHEV-M events to a remote syslog server ?**
+# How to configure RHEV-M to send events to a remote syslog server
 
-# Issue
+## Issue
 
 * RHEV-M events are stored in the local database and sent as SNMP traps.  There is no native mechanism to send these to a syslog server. To send events to a remote syslog server, it is necessary to capture the traps, log them to the local syslog service, and configure the local syslog service to send to the remote syslog server.
 
 
-# Environment
+## Environment
 
 * Red Hat Enterprise Virtualization RHEV-M 3.5 on RHEL 6.6
 
 
-# Resolution
+## Resolution
 
-## Configure rsyslog on RHEV-M server to send to remote syslog server.
+### Configure rsyslog on RHEV-M server to send to remote syslog server.
 
 * Create and edit /etc/rsyslog.d/remote.conf to include the following:
 
@@ -38,7 +38,7 @@ service rsyslog restart
 rhevm rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="1082" x-info="http://www.rsyslog.com"] start
 ```
 
-## Configure SNMP on the RHEV-M server to send SNMP traps to local syslog
+### Configure SNMP on the RHEV-M server to send SNMP traps to local syslog
 
 * Install the snmptrap service
 ```
@@ -72,7 +72,7 @@ remote syslog server:
 rhevm snmptrapd[1112]: NET-SNMP version 5.5
 ```
 
-## Enable RHEV-M to send snmp traps via ovirt-engine-notifier
+### Enable RHEV-M to send snmp traps via ovirt-engine-notifier
 
 * Edit /etc/ovirt-engine/notifier/notifier.conf.d/20-snmp.conf
 ```
