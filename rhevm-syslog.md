@@ -1,4 +1,4 @@
-# How to configure RHEV-M to send events to a remote syslog server
+# Configure RHEV-M to send events to a remote syslog server
 
 ## Issue
 
