@@ -1,6 +1,6 @@
-**How do I send RHEV-M events to a remote syslog server ?**
+# How do I send RHEV-M events to a remote syslog server ?
 
-# Issue
+## Issue
 
 * RHEV-M events are stored in the local database and sent as SNMP 
 traps.  There is no native mechanism to send these to a syslog server.  
@@ -8,7 +8,7 @@ To send events to a remote syslog server, it is necessary to capture
 the traps, log them to the local syslog service, and configure the 
 local syslog service to send to the remote syslog server.
 
-# Information Flow
+## Proposed Information Flow
 ```
 			 RHEV-M Server                 Remote Syslog Server
 	+-------------------------------+    +----------------------+
@@ -16,14 +16,14 @@ local syslog service to send to the remote syslog server.
 	+-------------------------------+    +----------------------+
 ```
 
-# Environment
+## Environment
 
 * Red Hat Enterprise Virtualization RHEV-M 3.5 on RHEL 6.6
 
 
-# Resolution
+## Resolution
 
-## Configure rsyslog on RHEV-M server to send to remote syslog server.
+### Configure rsyslog on RHEV-M server to send to remote syslog server.
 
 * Create and edit /etc/rsyslog.d/remote.conf to include the following:
 
@@ -50,7 +50,7 @@ remote syslog server:
 ```
 	rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" ...
 ```
-## Configure SNMP on the RHEV-M server to send SNMP traps to local syslog
+### Configure SNMP on the RHEV-M server to send SNMP traps to local syslog
 
 * Install the snmptrap service
 ```
@@ -81,7 +81,7 @@ remote syslog server:
 ```
 	rhevm snmptrapd[1112]: NET-SNMP version 5.5
 ```
-## Enable RHEV-M to send snmp traps via ovirt-engine-notifier
+### Enable RHEV-M to send snmp traps via ovirt-engine-notifier
 
 * Edit /etc/ovirt-engine/notifier/notifier.conf.d/20-snmp.conf
 ```
@@ -97,7 +97,7 @@ remote syslog server:
 	chkconfig ovirt-engine-notifier on
 ```
 
-## Validate Configuration
+### Validate Configuration
 
 Logging in to the RHEV Admin portal as admin@internal (or any other user)
 should generate a login message.  Similarly, logging out should generate
